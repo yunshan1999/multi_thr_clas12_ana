@@ -536,7 +536,7 @@ int Branches12::status(int i) {
     return _status->at(i);
 }
 
-int Branches12::trigger(int i) {
+float Branches12::trigger(int i) {
   if (i >= _pid->size())
     return -9999;
   else

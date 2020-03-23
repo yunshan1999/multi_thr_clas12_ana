@@ -32,6 +32,7 @@ class Branches12 {
   Int_t _NPGP;
   Double_t _LT;
   Float_t _PTIME;
+  v_float trigger;
 
   bool _is_mc;
   int _mc_run;
@@ -64,7 +65,7 @@ class Branches12 {
   v_float _chi2pid;
   v_int _status;
   v_int _dc_sec;
-  v_int _trigger;
+
   v_float _dc_r1_x;
   v_float _dc_r1_y;
   v_float _dc_r1_z;
@@ -270,7 +271,7 @@ class Branches12 {
   float beta(int i);
   float chi2pid(int i);
   int status(int i);
-  int trigger(int i);
+  float trigger(int i);
   // DC
   int dc_sec(int i);
   float dc_r1_x(int i);
