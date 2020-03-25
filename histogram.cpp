@@ -25,16 +25,16 @@ void Histogram::Write() {
   std::cerr << BOLDBLUE << "Done Writing!!!" << DEF << std::endl;
 }
 
-void Histogram::Fill_trigger(const std::shared_ptr<Reaction>& _d) {
+void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i) {
 
-  if(!std::isnan(_d->trigger())&& !std::isnan(_d->ft_cal_energy())){
+  if(!std::isnan(_d->trigger())&& !std::isnan(_d->ft_cal_energy(i))){
 
-  ft_cal_energy->Fill(_d->ft_cal_energy());
+  ft_cal_energy->Fill(_d->ft_cal_energy(i));
 
-  if (int(_d->trigger()) & (1<<21))_21_ft_cal_energy->Fill(_d->ft_cal_energy());
-  else   _n21_ft_cal_energy->Fill(_d->ft_cal_energy());
+  if (int(_d->trigger()) & (1<<21))_21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
+  else   _n21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
 
-  trigger_vs_ft_cal_energy->Fill(_d->trigger(),_d->ft_cal_energy());
+  trigger_vs_ft_cal_energy->Fill(_d->trigger(),_d->ft_cal_energy(i));
  }
 }
 
