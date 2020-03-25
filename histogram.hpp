@@ -24,6 +24,10 @@ class Histogram {
  protected:
   std::shared_ptr<TFile> RootOutputFile;
   std::shared_ptr<TCanvas> def;
+ 
+  int bins = 500;
+  double q2_max = 12.0;
+  double zero = 0.0;
   
   //trigger
   TH1D_ptr ft_cal_energy; 
