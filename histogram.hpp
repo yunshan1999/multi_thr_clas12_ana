@@ -38,7 +38,7 @@ class Histogram {
  public:
   Histogram(const std::string& output_file);
   ~Histogram();
-  void Fill_trigger(const std::shared_ptr<Branches12>& _d);
+  void Fill_trigger(const std::shared_ptr<Branches12>& _d, int i);
   void Write_trigger();
   
   void Write();
