@@ -390,7 +390,7 @@ void Histogram::Write_trigger(){
         Pho_21_sc_ctof_energy->SetXTitle("Pho_21_sc_ctof_energy(GeV)");
         Pho_21_sc_ctof_energy->Write();
         Pho_n21_sc_ctof_energy->SetXTitle("Pho_n21_sc_ctof_energy(GeV)");
-        Pho_n21_sc_ctof_energy>Write();
+        Pho_n21_sc_ctof_energy->Write();
         Pho_trigger_vs_sc_ctof_energy->SetXTitle("trigger bit");
         Pho_trigger_vs_sc_ctof_energy->SetYTitle("Pho_sc_ctof_energy(GeV)");
         Pho_trigger_vs_sc_ctof_energy->Write();
@@ -500,7 +500,7 @@ void Histogram::Write_trigger(){
         Elec_21_sc_ctof_energy->SetXTitle("Elec_21_sc_ctof_energy(GeV)");
         Elec_21_sc_ctof_energy->Write();
         Elec_n21_sc_ctof_energy->SetXTitle("Elec_n21_sc_ctof_energy(GeV)");
-        Elec_n21_sc_ctof_energy>Write();
+        Elec_n21_sc_ctof_energy->Write();
         Elec_trigger_vs_sc_ctof_energy->SetXTitle("trigger bit");
         Elec_trigger_vs_sc_ctof_energy->SetYTitle("Elec_sc_ctof_energy(GeV)");
         Elec_trigger_vs_sc_ctof_energy->Write();
