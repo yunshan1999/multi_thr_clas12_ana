@@ -26,17 +26,17 @@ void Histogram::Write() {
 }
 
 void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i) {
-
-  if(!std::isnan(_d->trigger())&& !std::isnan(_d->ft_cal_energy(i))){
- int T=int(_d->trigger());
-
+ 
+ if(!std::isnan(_d->trigger())&& !std::isnan(_d->ft_cal_energy(i))){
+  int T=int(_d->trigger());
+ 
   ft_cal_energy->Fill(_d->ft_cal_energy(i));
 
   if (T & (1<<21))_21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
   else   _n21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
 
   for (int flag=0;flag<32;flag++){
- if(T & (1<<flag)) trigger_vs_ft_cal_energy->Fill(flag ,_d->ft_cal_energy(i));
+  if(T & (1<<flag)) trigger_vs_ft_cal_energy->Fill(flag ,_d->ft_cal_energy(i));
   }
  }
 }
