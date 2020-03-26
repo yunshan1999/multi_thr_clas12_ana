@@ -1,57 +1,129 @@
-#include "histogram.hpp"
+#include "branches.hpp"
 
-Histogram::Histogram(const std::string& output_file) {
-  RootOutputFile = std::make_shared<TFile>(output_file.c_str(), "RECREATE");
-  def = std::make_shared<TCanvas>("def");
-  
-  ft_cal_energy = std::make_shared<TH1D>("ft_cal_energy","ft_cal_energy", bins, zero, q2_max);
-  _21_ft_cal_energy = std::make_shared<TH1D>("_21_ft_cal_energy","_21_ft_cal_energy", bins, zero, q2_max);
-  _n21_ft_cal_energy = std::make_shared<TH1D>("_n21_ft_cal_energy","_n21_ft_cal_energy", bins, zero, q2_max);
-  trigger_vs_ft_cal_energy = std::make_shared<TH2D>("trigger_vs_ft_cal_energy","trigger_vs_ft_cal_energy", bins, zero, q2_max, bins, zero, q2_max);
-  
+
+Branches12::Branches12(const std::shared_ptr<TChain> &tree) {
+  _tree = tree;
+  Branches12::init();
 }
 
-Histogram::~Histogram() { this->Write(); }
+void Branches12::init() {
+_trigger = 0;
+_ec_tot_energy = 0;
+_ec_pcal_energy = 0;
+_ec_ecin_energy = 0;
+_ec_ecout_energy = 0;
+_sc_ftof_1a_energy = 0;
+_sc_ftof_1b_energy = 0;
+_sc_ftof_2_energy = 0;
+_sc_ctof_energy = 0;
+_sc_cnd_energy = 0;
+_ft_cal_energy = 0;
+_ft_hodo_energy = 0;
+_pid = 0;
 
-void Histogram::Write() {
-  std::cout << GREEN << "Writting" << DEF << std::endl;
-  
-  std::cerr << BOLDBLUE << "Write_trigger()" << DEF << std::endl;
-  TDirectory* trigger_folder = RootOutputFile->mkdir("trigger_folder");
-  trigger_folder->cd();
-  Write_trigger();
-  
-  
-  std::cerr << BOLDBLUE << "Done Writing!!!" << DEF << std::endl;
+_tree->SetBranchStatus("*",0);
+_tree->SetBranchAddress("trigger", &_trigger);
+_tree->SetBranchAddress("ec_tot_energy", &_ec_tot_energy);
+_tree->SetBranchAddress("ec_pcal_energy", &_ec_pcal_energy);
+_tree->SetBranchAddress("ec_ecin_energy", &_ec_ecin_energy);
+_tree->SetBranchAddress("ec_ecout_energy", &_ec_ecout_energy);
+_tree->SetBranchAddress("sc_ftof_1a_energy", &_sc_ftof_1a_energy);
+_tree->SetBranchAddress("sc_ftof_1b_energy", &_sc_ftof_1b_energy);
+_tree->SetBranchAddress("sc_ftof_2_energy", &_sc_ftof_2_energy);
+_tree->SetBranchAddress("sc_ctof_energy", &_sc_ctof_energy);
+_tree->SetBranchAddress("sc_cnd_energy", &_sc_cnd_energy);
+_tree->SetBranchAddress("ft_cal_energy", &_ft_cal_energy);
+_tree->SetBranchAddress("ft_hodo_energy", &_ft_hodo_energy);
+_tree->SetBranchAddress("pid", &_pid);
 }
 
-void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i) {
- 
- if(!std::isnan(_d->trigger())&& !std::isnan(_d->ft_cal_energy(i))){
-  int T=int(_d->trigger());
- 
-  ft_cal_energy->Fill(_d->ft_cal_energy(i));
+int Branches12::gpart(){return _pid->size();}
 
-  if (T & (1<<21))_21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
-  else   _n21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
-
-  for (int flag=0;flag<32;flag++){
-  if(T & (1<<flag)) trigger_vs_ft_cal_energy->Fill(flag ,_d->ft_cal_energy(i));
-  }
- }
+int Branches12::pid(int i){
+  if(i >= _pid->size())return -9999;
+  else return _pid->at(i);
 }
 
-void Histogram::Write_trigger(){
-        ft_cal_energy->SetXTitle("ft_cal_energy");
-        ft_cal_energy->Write();
-
-        _21_ft_cal_energy->SetXTitle("_21_ft_cal_energy");
-        _21_ft_cal_energy->Write();
-
-        _n21_ft_cal_energy->SetXTitle("_n21_ft_cal_energy");
-        _n21_ft_cal_energy->Write();
-
-        trigger_vs_ft_cal_energy->SetXTitle("trigger bit");
-        trigger_vs_ft_cal_energy->SetYTitle("ft_cal_energy");
-        trigger_vs_ft_cal_energy->Write();
+int Branches12::trigger() {
+return _trigger;
 }
+
+float Branches12::ec_tot_energy(int i) {
+  if (i >= _ec_tot_energy->size())
+    return NAN;
+  else
+    return _ec_tot_energy->at(i);
+}
+
+float Branches12::ec_pcal_energy(int i) {
+  if (i >= _ec_pcal_energy->size())
+    return NAN;
+  else
+    return _ec_pcal_energy->at(i);
+}
+
+float Branches12::ec_ecin_energy(int i) {
+  if (i >= _ec_ecin_energy->size())
+    return NAN;
+  else
+    return _ec_ecin_energy->at(i);
+}
+
+float Branches12::ec_ecout_energy(int i) {
+  if (i >= _ec_ecout_energy->size())
+    return NAN;
+  else
+    return _ec_ecout_energy->at(i);
+}
+
+float Branches12::sc_ftof_1a_energy(int i) {
+  if (i >= _sc_ftof_1a_energy->size())
+    return NAN;
+  else
+    return _sc_ftof_1a_energy->at(i);
+}
+
+float Branches12::sc_ftof_1b_energy(int i) {
+  if (i >= _sc_ftof_1b_energy->size())
+    return NAN;
+  else
+    return _sc_ftof_1b_energy->at(i);
+}
+
+float Branches12::sc_ftof_2_energy(int i) {
+  if (i >= _sc_ftof_2_energy->size())
+    return NAN;
+  else
+    return _sc_ftof_2_energy->at(i);
+}
+
+float Branches12::sc_ctof_energy(int i) {
+  if (i >= _sc_ctof_energy->size())
+    return NAN;
+  else
+    return _sc_ctof_energy->at(i);
+}
+
+float Branches12::sc_cnd_energy(int i) {
+  if (i >= _sc_cnd_energy->size())
+    return NAN;
+  else
+    return _sc_cnd_energy->at(i);
+}
+
+float Branches12::ft_cal_energy(int i) {
+  if (i >= _ft_cal_energy->size())
+    return NAN;
+  else
+    return _ft_cal_energy->at(i);
+}
+
+float Branches12::ft_hodo_energy(int i) {
+  if (i >= _ft_hodo_energy->size())
+    return NAN;
+  else
+    return _ft_hodo_energy->at(i);
+}
+
+
+
