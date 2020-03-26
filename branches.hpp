@@ -12,6 +12,7 @@ class Branches12 {
   std::shared_ptr<TChain> _tree;
   
   Float_t _trigger;
+  v_int _pid;
   v_float _ec_tot_energy;
   v_float _ec_pcal_energy;
   v_float _ec_ecin_energy;
@@ -29,6 +30,7 @@ class Branches12 {
   Branches12(const std::shared_ptr<TChain> &tree);
   ~Branches12(){};
   void init();
+  int pid(int i);
   int trigger();
   float ec_tot_energy(int i);
   float ec_pcal_energy(int i);
