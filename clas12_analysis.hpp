@@ -44,7 +44,7 @@ size_t run(std::shared_ptr<TChain> _chain, std::shared_ptr<Histogram> _hists, in
       std::cout << "\t" << (100 * current_event / num_of_events) << " %\r" << std::flush;
 
     // For each particle in the event
-    for (int part = 1; part < data->gpart(); part++)_hists->Fill_trigger(data,part);
+    for (int part = 1; part < data->gpart(); part++)_hists->Fill_trigger(data,part,data->pid(part));
 
   }
   // Return the total number of events
