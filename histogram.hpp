@@ -30,65 +30,120 @@ class Histogram {
   double zero = 0.0;
   
   //trigger
-  TH1D_ptr ec_tot_energy; 
-  TH1D_ptr _21_ec_tot_energy; 
-  TH1D_ptr _n21_ec_tot_energy; 
-  TH2D_ptr trigger_vs_ec_tot_energy;
+  TH1D_ptr Pho_ec_tot_energy; 
+  TH1D_ptr Pho_21_ec_tot_energy; 
+  TH1D_ptr Pho_n21_ec_tot_energy; 
+  TH2D_ptr Pho_trigger_vs_ec_tot_energy;
  
-  TH1D_ptr ec_pcal_energy; 
-  TH1D_ptr _21_ec_pcal_energy; 
-  TH1D_ptr _n21_ec_pcal_energy; 
-  TH2D_ptr trigger_vs_ec_pcal_energy;
+  TH1D_ptr Pho_ec_pcal_energy; 
+  TH1D_ptr Pho_21_ec_pcal_energy; 
+  TH1D_ptr Pho_n21_ec_pcal_energy; 
+  TH2D_ptr Pho_trigger_vs_ec_pcal_energy;
  
-  TH1D_ptr ec_ecin_energy; 
-  TH1D_ptr _21_ec_ecin_energy; 
-  TH1D_ptr _n21_ec_ecin_energy; 
-  TH2D_ptr trigger_vs_ec_ecin_energy;
+  TH1D_ptr Pho_ec_ecin_energy; 
+  TH1D_ptr Pho_21_ec_ecin_energy; 
+  TH1D_ptr Pho_n21_ec_ecin_energy; 
+  TH2D_ptr Pho_trigger_vs_ec_ecin_energy;
  
-   TH1D_ptr ec_ecout_energy; 
-  TH1D_ptr _21_ec_ecout_energy; 
-  TH1D_ptr _n21_ec_ecout_energy; 
-  TH2D_ptr trigger_vs_ec_ecout_energy;
+  TH1D_ptr Pho_ec_ecout_energy; 
+  TH1D_ptr Pho_21_ec_ecout_energy; 
+  TH1D_ptr Pho_n21_ec_ecout_energy; 
+  TH2D_ptr Pho_trigger_vs_ec_ecout_energy;
  
-  TH1D_ptr sc_ftof_1a_energy; 
-  TH1D_ptr _21_sc_ftof_1a_energy; 
-  TH1D_ptr _n21_sc_ftof_1a_energy; 
-  TH2D_ptr trigger_vs_sc_ftof_1a_energy;
+  TH1D_ptr Pho_sc_ftof_1a_energy; 
+  TH1D_ptr Pho_21_sc_ftof_1a_energy; 
+  TH1D_ptr Pho_n21_sc_ftof_1a_energy; 
+  TH2D_ptr Pho_trigger_vs_sc_ftof_1a_energy;
  
-  TH1D_ptr sc_ftof_1b_energy; 
-  TH1D_ptr _21_sc_ftof_1b_energy; 
-  TH1D_ptr _n21_sc_ftof_1b_energy; 
-  TH2D_ptr trigger_vs_sc_ftof_1b_energy;
+  TH1D_ptr Pho_sc_ftof_1b_energy; 
+  TH1D_ptr Pho_21_sc_ftof_1b_energy; 
+  TH1D_ptr Pho_n21_sc_ftof_1b_energy; 
+  TH2D_ptr Pho_trigger_vs_sc_ftof_1b_energy;
  
-  TH1D_ptr sc_ftof_2_energy; 
-  TH1D_ptr _21_sc_ftof_2_energy; 
-  TH1D_ptr _n21_sc_ftof_2_energy; 
-  TH2D_ptr trigger_vs_sc_ftof_2_energy;
+  TH1D_ptr Pho_sc_ftof_2_energy; 
+  TH1D_ptr Pho_21_sc_ftof_2_energy; 
+  TH1D_ptr Pho_n21_sc_ftof_2_energy; 
+  TH2D_ptr Pho_trigger_vs_sc_ftof_2_energy;
  
-  TH1D_ptr sc_ctof_energy; 
-  TH1D_ptr _21_sc_ctof_energy; 
-  TH1D_ptr _n21_sc_ctof_energy; 
-  TH2D_ptr trigger_vs_sc_ctof_energy;
+  TH1D_ptr Pho_sc_ctof_energy; 
+  TH1D_ptr Pho_21_sc_ctof_energy; 
+  TH1D_ptr Pho_n21_sc_ctof_energy; 
+  TH2D_ptr Pho_trigger_vs_sc_ctof_energy;
  
-  TH1D_ptr sc_cnd_energy; 
-  TH1D_ptr _21_sc_cnd_energy; 
-  TH1D_ptr _n21_sc_cnd_energy; 
-  TH2D_ptr trigger_vs_sc_cnd_energy;
+  TH1D_ptr Pho_sc_cnd_energy; 
+  TH1D_ptr Pho_21_sc_cnd_energy; 
+  TH1D_ptr Pho_n21_sc_cnd_energy; 
+  TH2D_ptr Pho_trigger_vs_sc_cnd_energy;
  
-  TH1D_ptr ft_cal_energy; 
-  TH1D_ptr _21_ft_cal_energy; 
-  TH1D_ptr _n21_ft_cal_energy; 
-  TH2D_ptr trigger_vs_ft_cal_energy;
+  TH1D_ptr Pho_ft_cal_energy; 
+  TH1D_ptr Pho_21_ft_cal_energy; 
+  TH1D_ptr Pho_n21_ft_cal_energy; 
+  TH2D_ptr Pho_trigger_vs_ft_cal_energy;
  
-  TH1D_ptr ft_hodo_energy; 
-  TH1D_ptr _21_ft_hodo_energy; 
-  TH1D_ptr _n21_ft_hodo_energy; 
-  TH2D_ptr trigger_vs_ft_hodo_energy;
+  TH1D_ptr Pho_ft_hodo_energy; 
+  TH1D_ptr Pho_21_ft_hodo_energy; 
+  TH1D_ptr Pho_n21_ft_hodo_energy; 
+  TH2D_ptr Pho_trigger_vs_ft_hodo_energy;
+ 
+  TH1D_ptr Elec_ec_tot_energy; 
+  TH1D_ptr Elec_21_ec_tot_energy; 
+  TH1D_ptr Elec_n21_ec_tot_energy; 
+  TH2D_ptr Elec_trigger_vs_ec_tot_energy;
+ 
+  TH1D_ptr Elec_ec_pcal_energy; 
+  TH1D_ptr Elec_21_ec_pcal_energy; 
+  TH1D_ptr Elec_n21_ec_pcal_energy; 
+  TH2D_ptr Elec_trigger_vs_ec_pcal_energy;
+ 
+  TH1D_ptr Elec_ec_ecin_energy; 
+  TH1D_ptr Elec_21_ec_ecin_energy; 
+  TH1D_ptr Elec_n21_ec_ecin_energy; 
+  TH2D_ptr Elec_trigger_vs_ec_ecin_energy;
+ 
+  TH1D_ptr Elec_ec_ecout_energy; 
+  TH1D_ptr Elec_21_ec_ecout_energy; 
+  TH1D_ptr Elec_n21_ec_ecout_energy; 
+  TH2D_ptr Elec_trigger_vs_ec_ecout_energy;
+ 
+  TH1D_ptr Elec_sc_ftof_1a_energy; 
+  TH1D_ptr Elec_21_sc_ftof_1a_energy; 
+  TH1D_ptr Elec_n21_sc_ftof_1a_energy; 
+  TH2D_ptr Elec_trigger_vs_sc_ftof_1a_energy;
+ 
+  TH1D_ptr Elec_sc_ftof_1b_energy; 
+  TH1D_ptr Elec_21_sc_ftof_1b_energy; 
+  TH1D_ptr Elec_n21_sc_ftof_1b_energy; 
+  TH2D_ptr Elec_trigger_vs_sc_ftof_1b_energy;
+ 
+  TH1D_ptr Elec_sc_ftof_2_energy; 
+  TH1D_ptr Elec_21_sc_ftof_2_energy; 
+  TH1D_ptr Elec_n21_sc_ftof_2_energy; 
+  TH2D_ptr Elec_trigger_vs_sc_ftof_2_energy;
+ 
+  TH1D_ptr Elec_sc_ctof_energy; 
+  TH1D_ptr Elec_21_sc_ctof_energy; 
+  TH1D_ptr Elec_n21_sc_ctof_energy; 
+  TH2D_ptr Elec_trigger_vs_sc_ctof_energy;
+ 
+  TH1D_ptr Elec_sc_cnd_energy; 
+  TH1D_ptr Elec_21_sc_cnd_energy; 
+  TH1D_ptr Elec_n21_sc_cnd_energy; 
+  TH2D_ptr Elec_trigger_vs_sc_cnd_energy;
+ 
+  TH1D_ptr Elec_ft_cal_energy; 
+  TH1D_ptr Elec_21_ft_cal_energy; 
+  TH1D_ptr Elec_n21_ft_cal_energy; 
+  TH2D_ptr Elec_trigger_vs_ft_cal_energy;
+ 
+  TH1D_ptr Elec_ft_hodo_energy; 
+  TH1D_ptr Elec_21_ft_hodo_energy; 
+  TH1D_ptr Elec_n21_ft_hodo_energy; 
+  TH2D_ptr Elec_trigger_vs_ft_hodo_energy;
   
  public:
   Histogram(const std::string& output_file);
   ~Histogram();
-  void Fill_trigger(const std::shared_ptr<Branches12>& _d, int i);
+  void Fill_trigger(const std::shared_ptr<Branches12>& _d, int i, int pid);
   void Write_trigger();
   
   void Write();
