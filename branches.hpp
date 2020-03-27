@@ -2,6 +2,7 @@
 #define BRANCHES_H
 #include <iostream>
 #include <vector>
+#include <cmath>
 #include "TChain.h"
 
 using v_int = std::vector<int> *;
@@ -36,9 +37,7 @@ class Branches12 {
   int pid(int i);
   int trigger();
   int gpart();
-  int px();
-  int py();
-  int pz()
+  double angle(int i);
   float ec_tot_energy(int i);
   float ec_pcal_energy(int i);
   float ec_ecin_energy(int i);
