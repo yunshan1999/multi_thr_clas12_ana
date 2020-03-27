@@ -37,7 +37,7 @@ class Branches12 {
   int pid(int i);
   int trigger();
   int gpart();
-  double angle(int i);
+  float angle(int i);
   float ec_tot_energy(int i);
   float ec_pcal_energy(int i);
   float ec_ecin_energy(int i);
