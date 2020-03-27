@@ -51,10 +51,10 @@ int Branches12::pid(int i){
   else return _pid->at(i);
 }
 
-float Branches12::angle(){
-ppx = _px;
-ppy = _py;
-ppz = _pz;
+float Branches12::angle(int i){
+ppx = _px->at(i);
+ppy = _py->at(i);
+ppz = _pz->at(i);
 return 90*acos(ppz/sqrt(ppx*ppx+ppy*ppy+ppz*ppz));
 }
 
