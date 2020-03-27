@@ -13,6 +13,9 @@ class Branches12 {
   
   Float_t _trigger;
   v_int _pid;
+  v_float _px;
+  v_float _py;
+  v_float _pz;
   v_float _ec_tot_energy;
   v_float _ec_pcal_energy;
   v_float _ec_ecin_energy;
@@ -33,6 +36,9 @@ class Branches12 {
   int pid(int i);
   int trigger();
   int gpart();
+  int px();
+  int py();
+  int pz()
   float ec_tot_energy(int i);
   float ec_pcal_energy(int i);
   float ec_ecin_energy(int i);
