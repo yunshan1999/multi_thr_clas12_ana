@@ -324,6 +324,11 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
 }
 
 void Histogram::Write_trigger(){
+        Pho_angle->SetXTitle("Pho_angle");
+        Pho_angle->Write();
+        Elec_angle->SetXTitle("Elec_angle");
+        Elec_angle->Write();
+  
         Pho_ec_tot_energy->SetXTitle("Pho_ec_tot_energy(GeV)");
         Pho_ec_tot_energy->Write();
         Pho_21_ec_tot_energy->SetXTitle("Pho_21_ec_tot_energy(GeV)");
