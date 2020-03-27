@@ -20,6 +20,10 @@ _sc_cnd_energy = 0;
 _ft_cal_energy = 0;
 _ft_hodo_energy = 0;
 _pid = 0;
+_px = 0;
+_py = 0;
+_pz = 0;
+  
 
 _tree->SetBranchStatus("*",0);
 _tree->SetBranchAddress("trigger", &_trigger);
@@ -35,6 +39,9 @@ _tree->SetBranchAddress("sc_cnd_energy", &_sc_cnd_energy);
 _tree->SetBranchAddress("ft_cal_energy", &_ft_cal_energy);
 _tree->SetBranchAddress("ft_hodo_energy", &_ft_hodo_energy);
 _tree->SetBranchAddress("pid", &_pid);
+_tree->SetBranchAddress("px", &_px);
+_tree->SetBranchAddress("py", &_py);
+_tree->SetBranchAddress("pz", &_pz);
 }
 
 int Branches12::gpart(){return _pid->size();}
@@ -42,6 +49,13 @@ int Branches12::gpart(){return _pid->size();}
 int Branches12::pid(int i){
   if(i >= _pid->size())return -9999;
   else return _pid->at(i);
+}
+
+float Branches12::angle(){
+ppx = _px;
+ppy = _py;
+ppz = _pz;
+return 90*acos(ppz/sqrt(ppx*ppx+ppy*ppy+ppz*ppz));
 }
 
 int Branches12::trigger() {
