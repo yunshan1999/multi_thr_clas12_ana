@@ -4,8 +4,8 @@ Histogram::Histogram(const std::string& output_file) {
   RootOutputFile = std::make_shared<TFile>(output_file.c_str(), "RECREATE");
   def = std::make_shared<TCanvas>("def");
   
-   Pho_angle = <TH1D>("Pho_angle","Pho_angle",bins,zero,90);
-   Elec_angle = <TH1D>("Elec_angle","Elec_angle",bins,zero,90);
+   Pho_angle = std::make_shared<TH1D>("Pho_angle","Pho_angle",bins,zero,90);
+   Elec_angle = std::make_shared<TH1D>("Elec_angle","Elec_angle",bins,zero,90);
   //Pho_angle_vs_ft_cal_energy = std::make_shared<TH2D>("Pho_angle_vs_ft_cal_energy","Pho_angle_vs_ft_cal_energy",bins,zero,90,bins,zero,q2_max);
   //Pho_21_angle_vs_ft_cal_energy = std::make_shared<TH2D>("Pho_21_angle_vs_ft_cal_energy","Pho_21_angle_vs_ft_cal_energy",bins,zero,90,bins,zero,q2_max);
   //Pho_1_angle_vs_ft_cal_energy = std::make_shared<TH2D>("Pho_1_angle_vs_ft_cal_energy","Pho_1_angle_vs_ft_cal_energy",bins,zero,90,bins,zero,q2_max);
