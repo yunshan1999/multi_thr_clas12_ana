@@ -148,7 +148,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_ec_tot_energy->Fill(flag ,_d->ec_tot_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ec_pcal_energy(i))){
   Pho_ec_pcal_energy->Fill(_d->ec_pcal_energy(i));
   if (T & (1<<21))Pho_21_ec_pcal_energy->Fill(_d->ec_pcal_energy(i));
   else   Pho_n21_ec_pcal_energy->Fill(_d->ec_pcal_energy(i));
@@ -156,7 +156,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_ec_pcal_energy->Fill(flag ,_d->ec_pcal_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ec_ecin_energy(i))){
   Pho_ec_ecin_energy->Fill(_d->ec_ecin_energy(i));
   if (T & (1<<21))Pho_21_ec_ecin_energy->Fill(_d->ec_ecin_energy(i));
   else   Pho_n21_ec_ecin_energy->Fill(_d->ec_ecin_energy(i));
@@ -164,7 +164,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_ec_ecin_energy->Fill(flag ,_d->ec_ecin_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ec_ecout_energy(i))){
   Pho_ec_ecout_energy->Fill(_d->ec_ecout_energy(i));
   if (T & (1<<21))Pho_21_ec_ecout_energy->Fill(_d->ec_ecout_energy(i));
   else   Pho_n21_ec_ecout_energy->Fill(_d->ec_ecout_energy(i));
@@ -172,7 +172,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_ec_ecout_energy->Fill(flag ,_d->ec_ecout_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_ftof_1a_energy(i))){
   Pho_sc_ftof_1a_energy->Fill(_d->sc_ftof_1a_energy(i));
   if (T & (1<<21))Pho_21_sc_ftof_1a_energy->Fill(_d->sc_ftof_1a_energy(i));
   else   Pho_n21_sc_ftof_1a_energy->Fill(_d->sc_ftof_1a_energy(i));
@@ -180,7 +180,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_sc_ftof_1a_energy->Fill(flag ,_d->sc_ftof_1a_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_ftof_1b_energy(i))){
   Pho_sc_ftof_1b_energy->Fill(_d->sc_ftof_1b_energy(i));
   if (T & (1<<21))Pho_21_sc_ftof_1b_energy->Fill(_d->sc_ftof_1b_energy(i));
   else   Pho_n21_sc_ftof_1b_energy->Fill(_d->sc_ftof_1b_energy(i));
@@ -188,7 +188,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_sc_ftof_1b_energy->Fill(flag ,_d->sc_ftof_1b_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_ftof_2_energy(i))){
   Pho_sc_ftof_2_energy->Fill(_d->sc_ftof_2_energy(i));
   if (T & (1<<21))Pho_21_sc_ftof_2_energy->Fill(_d->sc_ftof_2_energy(i));
   else   Pho_n21_sc_ftof_2_energy->Fill(_d->sc_ftof_2_energy(i));
@@ -196,7 +196,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_sc_ftof_2_energy->Fill(flag ,_d->sc_ftof_2_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_ctof_energy(i))){
   Pho_sc_ctof_energy->Fill(_d->sc_ctof_energy(i));
   if (T & (1<<21))Pho_21_sc_ctof_energy->Fill(_d->sc_ctof_energy(i));
   else   Pho_n21_sc_ctof_energy->Fill(_d->sc_ctof_energy(i));
@@ -204,7 +204,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_sc_ctof_energy->Fill(flag ,_d->sc_ctof_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_cnd_energy(i))){
   int T=int(_d->trigger());
   Pho_sc_cnd_energy->Fill(_d->sc_cnd_energy(i));
   if (T & (1<<21))Pho_21_sc_cnd_energy->Fill(_d->sc_cnd_energy(i));
@@ -213,7 +213,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_sc_cnd_energy->Fill(flag ,_d->sc_cnd_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ft_cal_energy(i))){
   Pho_ft_cal_energy->Fill(_d->ft_cal_energy(i));
   if (T & (1<<21))Pho_21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
   else   Pho_n21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
@@ -221,7 +221,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Pho_trigger_vs_ft_cal_energy->Fill(flag ,_d->ft_cal_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ft_hodo_energy(i))){
   Pho_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
   if (T & (1<<21))Pho_21_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
   else   Pho_n21_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
@@ -241,7 +241,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_ec_tot_energy->Fill(flag ,_d->ec_tot_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ec_pcal_energy(i))){
   Elec_ec_pcal_energy->Fill(_d->ec_pcal_energy(i));
   if (T & (1<<21))Elec_21_ec_pcal_energy->Fill(_d->ec_pcal_energy(i));
   else   Elec_n21_ec_pcal_energy->Fill(_d->ec_pcal_energy(i));
@@ -249,7 +249,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_ec_pcal_energy->Fill(flag ,_d->ec_pcal_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ec_ecin_energy(i))){
   Elec_ec_ecin_energy->Fill(_d->ec_ecin_energy(i));
   if (T & (1<<21))Elec_21_ec_ecin_energy->Fill(_d->ec_ecin_energy(i));
   else   Elec_n21_ec_ecin_energy->Fill(_d->ec_ecin_energy(i));
@@ -257,7 +257,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_ec_ecin_energy->Fill(flag ,_d->ec_ecin_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ec_ecout_energy(i))){
   Elec_ec_ecout_energy->Fill(_d->ec_ecout_energy(i));
   if (T & (1<<21))Elec_21_ec_ecout_energy->Fill(_d->ec_ecout_energy(i));
   else   Elec_n21_ec_ecout_energy->Fill(_d->ec_ecout_energy(i));
@@ -265,7 +265,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_ec_ecout_energy->Fill(flag ,_d->ec_ecout_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_ftof_1a_energy(i))){
   Elec_sc_ftof_1a_energy->Fill(_d->sc_ftof_1a_energy(i));
   if (T & (1<<21))Elec_21_sc_ftof_1a_energy->Fill(_d->sc_ftof_1a_energy(i));
   else   Elec_n21_sc_ftof_1a_energy->Fill(_d->sc_ftof_1a_energy(i));
@@ -273,7 +273,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_sc_ftof_1a_energy->Fill(flag ,_d->sc_ftof_1a_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_ftof_1b_energy(i))){
   Elec_sc_ftof_1b_energy->Fill(_d->sc_ftof_1b_energy(i));
   if (T & (1<<21))Elec_21_sc_ftof_1b_energy->Fill(_d->sc_ftof_1b_energy(i));
   else   Elec_n21_sc_ftof_1b_energy->Fill(_d->sc_ftof_1b_energy(i));
@@ -281,7 +281,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_sc_ftof_1b_energy->Fill(flag ,_d->sc_ftof_1b_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_ftof_2_energy(i))){
   Elec_sc_ftof_2_energy->Fill(_d->sc_ftof_2_energy(i));
   if (T & (1<<21))Elec_21_sc_ftof_2_energy->Fill(_d->sc_ftof_2_energy(i));
   else   Elec_n21_sc_ftof_2_energy->Fill(_d->sc_ftof_2_energy(i));
@@ -289,7 +289,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_sc_ftof_2_energy->Fill(flag ,_d->sc_ftof_2_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_ctof_energy(i))){
   Elec_sc_ctof_energy->Fill(_d->sc_ctof_energy(i));
   if (T & (1<<21))Elec_21_sc_ctof_energy->Fill(_d->sc_ctof_energy(i));
   else   Elec_n21_sc_ctof_energy->Fill(_d->sc_ctof_energy(i));
@@ -297,7 +297,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_sc_ctof_energy->Fill(flag ,_d->sc_ctof_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->sc_cnd_energy(i))){
   Elec_sc_cnd_energy->Fill(_d->sc_cnd_energy(i));
   if (T & (1<<21))Elec_21_sc_cnd_energy->Fill(_d->sc_cnd_energy(i));
   else   Elec_n21_sc_cnd_energy->Fill(_d->sc_cnd_energy(i));
@@ -305,7 +305,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_sc_cnd_energy->Fill(flag ,_d->sc_cnd_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ft_cal_energy(i))){
   Elec_ft_cal_energy->Fill(_d->ft_cal_energy(i));
   if (T & (1<<21))Elec_21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
   else   Elec_n21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
@@ -313,7 +313,7 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
    if(T & (1<<flag)) Elec_trigger_vs_ft_cal_energy->Fill(flag ,_d->ft_cal_energy(i));
  }
   
-    if(!std::isnan(_d->trigger())){
+    if(!std::isnan(_d->ft_hodo_energy(i))){
   Elec_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
   if (T & (1<<21))Elec_21_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
   else   Elec_n21_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
