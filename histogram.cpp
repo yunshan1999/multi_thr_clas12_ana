@@ -4,13 +4,14 @@ Histogram::Histogram(const std::string& output_file) {
   RootOutputFile = std::make_shared<TFile>(output_file.c_str(), "RECREATE");
   def = std::make_shared<TCanvas>("def");
   
-   Pho_angle = std::make_shared<TH1D>("Pho_angle","Pho_angle",bins,zero,90);
-   Elec_angle = std::make_shared<TH1D>("Elec_angle","Elec_angle",bins,zero,90);
+  Pho_angle = std::make_shared<TH1D>("Pho_angle","Pho_angle",bins,zero,90);
+  Elec_angle = std::make_shared<TH1D>("Elec_angle","Elec_angle",bins,zero,90);
   //Pho_angle_vs_ft_cal_energy = std::make_shared<TH2D>("Pho_angle_vs_ft_cal_energy","Pho_angle_vs_ft_cal_energy",bins,zero,90,bins,zero,q2_max);
-  //Pho_21_angle_vs_ft_cal_energy = std::make_shared<TH2D>("Pho_21_angle_vs_ft_cal_energy","Pho_21_angle_vs_ft_cal_energy",bins,zero,90,bins,zero,q2_max);
-  //Pho_1_angle_vs_ft_cal_energy = std::make_shared<TH2D>("Pho_1_angle_vs_ft_cal_energy","Pho_1_angle_vs_ft_cal_energy",bins,zero,90,bins,zero,q2_max);
+  Pho_21_angle = std::make_shared<TH1D>("Pho_21_angle","Pho_21_angle",bins,zero,90);
+  Pho_n_21_angle = std::make_shared<TH1D>("Pho_n_21_angle","Pho_21_angle",bins,zero,90);
+  Elec_21_angle = std::make_shared<TH1D>("Elec_21_angle","Elec_21_anle",bins,zero,90);
+  Elec_n_21_angle = std::make_shared<TH1D>("Elec_n_21_angle","Elec_n_21_anle",bins,zero,90);
   
-
   Pho_ec_tot_energy = std::make_shared<TH1D>("Pho_ec_tot_energy","Pho_ec_tot_energy", bins, zero, q2_max);
   Pho_21_ec_tot_energy = std::make_shared<TH1D>("Pho_21_ec_tot_energy","Pho_21_ec_tot_energy", bins, zero, q2_max);
   Pho_n21_ec_tot_energy = std::make_shared<TH1D>("Pho_n21_ec_tot_energy","Pho_n21_ec_tot_energy", bins, zero, q2_max);
@@ -139,7 +140,10 @@ void Histogram::Write() {
 void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid) {
   if(pid==22){
   if(!std::isnan(_d->trigger())){ int T=int(_d->trigger());
-                                  Pho_angle->Fill(_d->angle(i));                              
+                                  Pho_angle->Fill(_d->angle(i));
+                                  if(T&(1<<21))Pho_21_angle->Fill(_d->angle(i));
+                                  else Pho_n_21_angle->Fill(_d->angle(i));
+                             
   if(!std::isnan(_d->ec_tot_energy(i))){
   Pho_ec_tot_energy->Fill(_d->ec_tot_energy(i));
   if (T & (1<<21))Pho_21_ec_tot_energy->Fill(_d->ec_tot_energy(i));
@@ -232,6 +236,8 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
   else if(pid==11){  if(!std::isnan(_d->trigger())){ 
     int T=int(_d->trigger());
     Elec_angle->Fill(_d->angle(i));
+    if(T&(1<<21))Elec_21_angle->Fill(_d->angle(i));
+    else Elec_n_21_angle->Fill(_d->angle(i));
     
   if(!std::isnan(_d->ec_tot_energy(i))){
   Elec_ec_tot_energy->Fill(_d->ec_tot_energy(i));
@@ -328,6 +334,11 @@ void Histogram::Write_trigger(){
         Pho_angle->Write();
         Elec_angle->SetXTitle("Elec_angle");
         Elec_angle->Write();
+        Pho_21_angle->Write();
+        Pho_n_21_angle->Write();
+        Elec_21_angle->Write();
+        Elec_n_21_angle->Write();
+
   
         Pho_ec_tot_energy->SetXTitle("Pho_ec_tot_energy(GeV)");
         Pho_ec_tot_energy->Write();
