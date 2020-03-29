@@ -34,6 +34,10 @@ class Histogram {
   //trigger
   TH1D_ptr Pho_angle;
   TH1D_ptr Elec_angle;
+  TH1D_ptr Pho_21_angle;
+  TH1D_ptr Pho_n_21_angle;
+  TH1D_ptr Elec_21_angle;
+  TH1D_ptr Elec_n_21_angle;
  
   TH1D_ptr Pho_ec_tot_energy; 
   TH1D_ptr Pho_21_ec_tot_energy; 
