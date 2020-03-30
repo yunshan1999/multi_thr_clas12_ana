@@ -59,11 +59,15 @@ Histogram::Histogram(const std::string& output_file) {
   
   Pho_ft_cal_energy = std::make_shared<TH1D>("Pho_ft_cal_energy","Pho_ft_cal_energy", bins, zero, q2_max);
   Pho_21_ft_cal_energy = std::make_shared<TH1D>("Pho_21_ft_cal_energy","Pho_21_ft_cal_energy", bins, zero, q2_max);
+  Pho_ft_cal_energy_cut = std::make_shared<TH1D>("Pho_ft_cal_energy_cut","Pho_ft_cal_energy_cut", bins, zero, q2_max);
+  Pho_21_ft_cal_energy_cut = std::make_shared<TH1D>("Pho_21_ft_cal_energy_cut","Pho_21_ft_cal_energy_cut", bins, zero, q2_max);
   Pho_n21_ft_cal_energy = std::make_shared<TH1D>("Pho_n21_ft_cal_energy","Pho_n21_ft_cal_energy", bins, zero, q2_max);
   Pho_trigger_vs_ft_cal_energy = std::make_shared<TH2D>("Pho_trigger_vs_ft_cal_energy","Pho_trigger_vs_ft_cal_energy", 32, zero, 31, bins, zero, q2_max);
   
   Pho_ft_hodo_energy = std::make_shared<TH1D>("Pho_ft_hodo_energy","Pho_ft_hodo_energy", bins, zero, q2_max);
   Pho_21_ft_hodo_energy = std::make_shared<TH1D>("Pho_21_ft_hodo_energy","Pho_21_ft_hodo_energy", bins, zero, q2_max);
+  Pho_ft_hodo_energy_cut = std::make_shared<TH1D>("Pho_ft_hodo_energy_cut","Pho_ft_hodo_energy_cut", bins, zero, q2_max);
+  Pho_21_ft_hodo_energy_cut = std::make_shared<TH1D>("Pho_21_ft_hodo_energy_cut","Pho_21_ft_hodo_energy_cut", bins, zero, q2_max);
   Pho_n21_ft_hodo_energy = std::make_shared<TH1D>("Pho_n21_ft_hodo_energy","Pho_n21_ft_hodo_energy", bins, zero, q2_max);
   Pho_trigger_vs_ft_hodo_energy = std::make_shared<TH2D>("Pho_trigger_vs_ft_hodo_energy","Pho_trigger_vs_ft_hodo_energy", 32, zero, 31, bins, zero, q2_max);
 
@@ -114,6 +118,8 @@ Histogram::Histogram(const std::string& output_file) {
   
   Elec_ft_cal_energy = std::make_shared<TH1D>("Elec_ft_cal_energy","Elec_ft_cal_energy", bins, zero, q2_max);
   Elec_21_ft_cal_energy = std::make_shared<TH1D>("Elec_21_ft_cal_energy","Elec_21_ft_cal_energy", bins, zero, q2_max);
+  Elec_ft_cal_energy_cut = std::make_shared<TH1D>("Elec_ft_cal_energy_cut","Elec_ft_cal_energy_cut", bins, zero, q2_max);
+  Elec_21_ft_cal_energy_cut = std::make_shared<TH1D>("Elec_21_ft_cal_energy_cut","Elec_21_ft_cal_energy_cut", bins, zero, q2_max);
   Elec_n21_ft_cal_energy = std::make_shared<TH1D>("Elec_n21_ft_cal_energy","Elec_n21_ft_cal_energy", bins, zero, q2_max);
   Elec_trigger_vs_ft_cal_energy = std::make_shared<TH2D>("Elec_trigger_vs_ft_cal_energy","Elec_trigger_vs_ft_cal_energy", 32, zero, 31, bins, zero, q2_max);
   
@@ -218,16 +224,22 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
  }
   
     if(!std::isnan(_d->ft_cal_energy(i))){
-  Pho_ft_cal_energy->Fill(_d->ft_cal_energy(i));
-  if (T & (1<<21))Pho_21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
-  else   Pho_n21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
+     float E=_d->ft_cal_energy(i);
+  Pho_ft_cal_energy->Fill(E);
+  if(E>1.0&&E<4.0)Pho_ft_cal_energy_cut->Fill(E);
+  if (T & (1<<21)){Pho_21_ft_cal_energy->Fill(E);
+                   if(E>1.0&&E<4.0)Pho_21_ft_cal_energy_cut->Fill(E);}
+  else   Pho_n21_ft_cal_energy->Fill(E);
   for (int flag=0;flag<32;flag++)
-   if(T & (1<<flag)) Pho_trigger_vs_ft_cal_energy->Fill(flag ,_d->ft_cal_energy(i));
+   if(T & (1<<flag)) Pho_trigger_vs_ft_cal_energy->Fill(flag ,E);
  }
   
     if(!std::isnan(_d->ft_hodo_energy(i))){
-  Pho_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
-  if (T & (1<<21))Pho_21_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
+      float E=_d->ft_hodo_energy(i);
+  Pho_ft_hodo_energy->Fill(E);
+  if(E>0.0)Pho_ft_hodo_energy_cut->Fill(E);
+  if (T & (1<<21)){Pho_21_ft_hodo_energy->Fill(E);
+                   if(E>0.0)Pho_21_ft_hodo_energy_cut->Fill(E);}
   else   Pho_n21_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
   for (int flag=0;flag<32;flag++)
    if(T & (1<<flag)) Pho_trigger_vs_ft_hodo_energy->Fill(flag ,_d->ft_hodo_energy(i));
@@ -312,16 +324,22 @@ void Histogram::Fill_trigger(const std::shared_ptr<Branches12>& _d,int i,int pid
  }
   
     if(!std::isnan(_d->ft_cal_energy(i))){
-  Elec_ft_cal_energy->Fill(_d->ft_cal_energy(i));
-  if (T & (1<<21))Elec_21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
-  else   Elec_n21_ft_cal_energy->Fill(_d->ft_cal_energy(i));
+  float E = _d->ft_cal_energy(i);
+  Elec_ft_cal_energy->Fill(E);
+      if(E>1.0&&E<4.0)Elec_ft_cal_energy_cut->Fill(E);
+  if (T & (1<<21)){Elec_21_ft_cal_energy->Fill(E);
+                   if(E>1.0&&E<4.0)Elec_21_ft_cal_energy_cut->Fill(E);}
+  else   Elec_n21_ft_cal_energy->Fill(E);
   for (int flag=0;flag<32;flag++)
-   if(T & (1<<flag)) Elec_trigger_vs_ft_cal_energy->Fill(flag ,_d->ft_cal_energy(i));
+   if(T & (1<<flag)) Elec_trigger_vs_ft_cal_energy->Fill(flag ,E);
  }
   
     if(!std::isnan(_d->ft_hodo_energy(i))){
-  Elec_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
-  if (T & (1<<21))Elec_21_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
+      float E = _d->ft_hodo_energy(i);
+  Elec_ft_hodo_energy->Fill(E);
+      if(E>0.0)Elec_ft_hodo_energy_cut->Fill(E);
+  if (T & (1<<21)){Elec_21_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
+                   if(E>0.0)Elec_21_ft_hodo_energy_cut->Fill(E);}
   else   Elec_n21_ft_hodo_energy->Fill(_d->ft_hodo_energy(i));
   for (int flag=0;flag<32;flag++)
    if(T & (1<<flag)) Elec_trigger_vs_ft_hodo_energy->Fill(flag ,_d->ft_hodo_energy(i));
