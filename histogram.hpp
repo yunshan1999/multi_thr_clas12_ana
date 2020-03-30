@@ -87,12 +87,17 @@ class Histogram {
   TH1D_ptr Pho_ft_cal_energy; 
   TH1D_ptr Pho_21_ft_cal_energy; 
   TH1D_ptr Pho_n21_ft_cal_energy; 
+  TH1D_ptr Pho_ft_cal_energy_cut; 
+  TH1D_ptr Pho_21_ft_cal_energy_cut; 
   TH2D_ptr Pho_trigger_vs_ft_cal_energy;
  
   TH1D_ptr Pho_ft_hodo_energy; 
   TH1D_ptr Pho_21_ft_hodo_energy; 
   TH1D_ptr Pho_n21_ft_hodo_energy; 
+  TH1D_ptr Pho_21_ft_hodo_energy_cut; 
+  TH1D_ptr Pho_n21_ft_hodo_energy_cut; 
   TH2D_ptr Pho_trigger_vs_ft_hodo_energy;
+  
  
   TH1D_ptr Elec_ec_tot_energy; 
   TH1D_ptr Elec_21_ec_tot_energy; 
@@ -142,6 +147,8 @@ class Histogram {
   TH1D_ptr Elec_ft_cal_energy; 
   TH1D_ptr Elec_21_ft_cal_energy; 
   TH1D_ptr Elec_n21_ft_cal_energy; 
+  TH1D_ptr Elec_ft_cal_energy_cut; 
+  TH1D_ptr Elec_21_ft_cal_energy_cut; 
   TH2D_ptr Elec_trigger_vs_ft_cal_energy;
  
   TH1D_ptr Elec_ft_hodo_energy; 
