@@ -1,6 +1,5 @@
 #include "branches.hpp"
 
-
 Branches12::Branches12(const std::shared_ptr<TChain> &tree) {
   _tree = tree;
   Branches12::init();
@@ -8,15 +7,7 @@ Branches12::Branches12(const std::shared_ptr<TChain> &tree) {
 
 void Branches12::init() {
 _trigger = 0;
-_ec_tot_energy = 0;
-_ec_pcal_energy = 0;
-_ec_ecin_energy = 0;
-_ec_ecout_energy = 0;
-_sc_ftof_1a_energy = 0;
-_sc_ftof_1b_energy = 0;
-_sc_ftof_2_energy = 0;
-_sc_ctof_energy = 0;
-_sc_cnd_energy = 0;
+_liveTime = 0;
 _ft_cal_energy = 0;
 _ft_hodo_energy = 0;
 _pid = 0;
@@ -24,18 +15,9 @@ _px = 0;
 _py = 0;
 _pz = 0;
   
-
 _tree->SetBranchStatus("*",0);
 _tree->SetBranchAddress("trigger", &_trigger);
-_tree->SetBranchAddress("ec_tot_energy", &_ec_tot_energy);
-_tree->SetBranchAddress("ec_pcal_energy", &_ec_pcal_energy);
-_tree->SetBranchAddress("ec_ecin_energy", &_ec_ecin_energy);
-_tree->SetBranchAddress("ec_ecout_energy", &_ec_ecout_energy);
-_tree->SetBranchAddress("sc_ftof_1a_energy", &_sc_ftof_1a_energy);
-_tree->SetBranchAddress("sc_ftof_1b_energy", &_sc_ftof_1b_energy);
-_tree->SetBranchAddress("sc_ftof_2_energy", &_sc_ftof_2_energy);
-_tree->SetBranchAddress("sc_ctof_energy", &_sc_ctof_energy);
-_tree->SetBranchAddress("sc_cnd_energy", &_sc_cnd_energy);
+_tree->SetBranchAddress("liveTime", &_liveTime);
 _tree->SetBranchAddress("ft_cal_energy", &_ft_cal_energy);
 _tree->SetBranchAddress("ft_hodo_energy", &_ft_hodo_energy);
 _tree->SetBranchAddress("pid", &_pid);
@@ -62,67 +44,8 @@ int Branches12::trigger() {
 return _trigger;
 }
 
-float Branches12::ec_tot_energy(int i) {
-  if (i >= _ec_tot_energy->size())
-    return NAN;
-  else
-    return _ec_tot_energy->at(i);
-}
-
-float Branches12::ec_pcal_energy(int i) {
-  if (i >= _ec_pcal_energy->size())
-    return NAN;
-  else
-    return _ec_pcal_energy->at(i);
-}
-
-float Branches12::ec_ecin_energy(int i) {
-  if (i >= _ec_ecin_energy->size())
-    return NAN;
-  else
-    return _ec_ecin_energy->at(i);
-}
-
-float Branches12::ec_ecout_energy(int i) {
-  if (i >= _ec_ecout_energy->size())
-    return NAN;
-  else
-    return _ec_ecout_energy->at(i);
-}
-
-float Branches12::sc_ftof_1a_energy(int i) {
-  if (i >= _sc_ftof_1a_energy->size())
-    return NAN;
-  else
-    return _sc_ftof_1a_energy->at(i);
-}
-
-float Branches12::sc_ftof_1b_energy(int i) {
-  if (i >= _sc_ftof_1b_energy->size())
-    return NAN;
-  else
-    return _sc_ftof_1b_energy->at(i);
-}
-
-float Branches12::sc_ftof_2_energy(int i) {
-  if (i >= _sc_ftof_2_energy->size())
-    return NAN;
-  else
-    return _sc_ftof_2_energy->at(i);
-}
-
-float Branches12::sc_ctof_energy(int i) {
-  if (i >= _sc_ctof_energy->size())
-    return NAN;
-  else
-    return _sc_ctof_energy->at(i);
-}
-
-float Branches12::sc_cnd_energy(int i) {
-  if (i >= _sc_cnd_energy->size())
-    return NAN;
-  else
-    return _sc_cnd_energy->at(i);
+float Branches12::liveTime(){
+return _liveTime;
 }
 
 float Branches12::ft_cal_energy(int i) {
