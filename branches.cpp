@@ -44,7 +44,7 @@ int Branches12::trigger() {
 return _trigger;
 }
 
-float Branches12::liveTime(){
+double Branches12::liveTime(){
 return _liveTime;
 }
 
